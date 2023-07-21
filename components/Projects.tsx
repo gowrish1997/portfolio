@@ -21,7 +21,10 @@ const Projects = ({ projects }: Props) => {
       <div className="relative w-full flex overflow-x-scroll snap-x snap-mandatory overflow-y-hidden z-20 scrollbar-thumb-[#35C6F4] scrollbar-track-gray-400/20 scrollbar-thin  ">
         {projects.map((data, index) => {
           return (
-            <div className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen  ">
+            <div
+              className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen  "
+              key={index}
+            >
               <a href={data.linkToBuild} target="_blank">
                 <motion.img
                   initial={{ y: -300, opacity: 0 }}

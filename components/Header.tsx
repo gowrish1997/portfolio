@@ -17,9 +17,10 @@ const Header = ({ socials }: Props) => {
         animate={{ x: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
       >
-        {socials.map((social) => {
+        {socials.map((social,index) => {
           return (
             <SocialIcon
+            key={index}
               url={social.url}
               fgColor="gray"
               bgColor="transparent"

@@ -43,7 +43,7 @@ const About = ({ pageInfo }: Props) => {
           <div className="text-4xl font-semibold flex flex-row items-center">
             {about.map((letter, index) => {
               if (about[index].trim() === "") {
-                return <span className="mr-[5px] " />;
+                return <span key={index} className="mr-[5px] " />;
               } else {
                 return (
                   <motion.h4
