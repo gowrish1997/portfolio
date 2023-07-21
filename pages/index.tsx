@@ -42,7 +42,7 @@ export default function Home({
         className="progress-bar"
           style={{ scaleX: scrollYProgress }}
         /> */}
-        <Header socials={socials} />
+      <Header socials={socials} />
       <section id="hero" className="snap-start relative ">
         <Hero pageInfo={pageInfo} />
       </section>
@@ -86,5 +86,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const socials = await fetchSocials();
   const projects = await fetchProjects();
 
-  return { props: { pageInfo, experience, skills, socials, projects } };
+  return {
+    props: { pageInfo, experience, skills, socials, projects },
+  };
 };
