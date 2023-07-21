@@ -5,35 +5,37 @@ import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import WorkExperience from "@/components/WorkExperience";
-import { Experience, PageInfo, Project, Skill, Social } from "@/typings";
-import { fetchExperience } from "@/utils/fetchExperience";
+import { PageInfo, Social } from "@/typings";
 import { fetchPageInfo } from "@/utils/fetchPageInfo";
-import { fetchProjects } from "@/utils/fetchProjects";
-import { fetchSkills } from "@/utils/fetchSkills";
 import { fetchSocials } from "@/utils/fetchSocials";
 import { ArrowUpIcon } from "@heroicons/react/solid";
-import { GetStaticProps } from "next";
 import Link from "next/link";
-import { motion, useScroll } from "framer-motion";
+import { useEffect, useState } from "react";
 
-type Props = {
-  skills: Skill[];
-  projects: Project[];
-  socials: Social[];
-  experience: Experience[];
+// type Props = {
+//   skills: Skill[];
+//   projects: Project[];
+//   socials: Social[];
+//   experience: Experience[];
 
-  pageInfo: PageInfo;
-};
+//   pageInfo: PageInfo;
+// };
 
-export default function Home({
-  pageInfo,
-  experience,
-  skills,
-  socials,
-  projects,
-}: Props) {
-  const { scrollYProgress } = useScroll();
-  console.log(scrollYProgress);
+export default function Home() {
+  const [socials, setSocials] = useState<Social[]>([]);
+  const [pageInfo, setPageInfo] = useState<PageInfo>();
+  useEffect(() => {
+    const getSocials = async () => {
+      const socials = await fetchSocials();
+      const pageInfo = await fetchPageInfo();
+      console.log(socials);
+      console.log(pageInfo);
+      setSocials(socials);
+      setPageInfo(pageInfo);
+    };
+    getSocials();
+  }, []);
+
   return (
     <main
       className={`bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-50 scrollbar scrollbar-thumb-[#35C6F4] scrollbar-track-gray-400/20   `}
@@ -42,26 +44,31 @@ export default function Home({
         className="progress-bar"
           style={{ scaleX: scrollYProgress }}
         /> */}
-        <Header socials={socials} />
-      <section id="hero" className="snap-start relative ">
-        <Hero pageInfo={pageInfo} />
-      </section>
-      <section id="about" className="snap-center">
-        <About pageInfo={pageInfo} />
-      </section>
+      <Header socials={socials} />
+      {pageInfo && (
+        <section id="hero" className="snap-start relative ">
+          <Hero pageInfo={pageInfo!} />{" "}
+        </section>
+      )}
+      {pageInfo && (
+        <section id="about" className="snap-center">
+          <About pageInfo={pageInfo!} />
+        </section>
+      )}
+
       <section id="experience" className="snap-center">
-        <WorkExperience experience={experience} />
+        <WorkExperience />
       </section>
       <section id="skills" className="snap-start">
-        <Skills skills={skills} />
+        <Skills />
       </section>
       <section id="projects" className="snap-start">
-        <Projects projects={projects} />
+        <Projects />
       </section>
       <section id="contact" className="snap-start">
         <Contactme />
       </section>
-      =
+
       <Link href="#hero">
         <footer className="sticky bottom-5 w-full cursor-pointer ">
           <div className="flex items-center justify-center ">
@@ -78,13 +85,13 @@ export default function Home({
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo = await fetchPageInfo();
-  const experience = await fetchExperience();
-  const skills = await fetchSkills();
+// export const getStaticProps: GetStaticProps<Props> = async () => {
+//   const pageInfo = await fetchPageInfo();
+//   const experience = await fetchExperience();
+//   const skills = await ();
 
-  const socials = await fetchSocials();
-  const projects = await fetchProjects();
+//   const socials = await fetchSocials();
+//   const projects = await fetchProjects();
 
-  return { props: { pageInfo, experience, skills, socials, projects } };
-};
+//   return { props: { pageInfo, experience, skills, socials, projects } };
+// };

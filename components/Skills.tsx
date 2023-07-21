@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Skill from "./Skill";
-import { Skill as SkillType } from "@/typings";
+import Eachkill from "./Skill";
+import { Experience, Skill } from "@/typings";
 import SkillsTsParticles from "./SkillTsParticles";
 import { useRouter } from "next/router";
+import { fetchSkills } from "@/utils/fetchSkills";
 
-type Props = { skills: SkillType[] };
-
-const Skills = ({ skills }: Props) => {
+const Skills = () => {
   const router = useRouter();
+  const [skills, setSkills] = useState<Skill[]>([]);
+  useEffect(() => {
+    const getSkills = async () => {
+      const skills = await fetchSkills();
+      setSkills(skills);
+    };
+    getSkills();
+  }, []);
 
   return (
     <motion.div
@@ -28,10 +35,10 @@ const Skills = ({ skills }: Props) => {
       </h3>
       <div className="grid grid-cols-4 gap-5 z-30 ">
         {skills.slice(0, skills.length / 2).map((skill) => (
-          <Skill key={skill._id} directionLeft={true} skill={skill} />
+          <Eachkill key={skill._id} directionLeft={true} skill={skill} />
         ))}
         {skills.slice(skills.length / 2, skills.length).map((skill) => (
-          <Skill key={skill._id} directionLeft={false} skill={skill} />
+          <Eachkill key={skill._id} directionLeft={false} skill={skill} />
         ))}
       </div>
     </motion.div>

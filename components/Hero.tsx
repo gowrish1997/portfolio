@@ -1,12 +1,11 @@
-import React from "react";
-import { Cursor, useTypewriter } from "react-simple-typewriter";
-import BackgroundCircle from "./BackgroundCircle";
+import { urlFor } from "@/sanity";
+import { PageInfo } from "@/typings";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { PageInfo } from "@/typings";
+import { Cursor, useTypewriter } from "react-simple-typewriter";
+import BackgroundCircle from "./BackgroundCircle";
 import HeroTsParticles from "./HeroTsParticles";
-import { urlFor } from "@/sanity";
-import { motion } from "framer-motion";
 
 const menuItem = [
   { name: "About", link: "#about", direction: "left" },
@@ -27,9 +26,10 @@ const container = {
 type Props = { pageInfo: PageInfo };
 
 const Hero = ({ pageInfo }: Props) => {
+ 
   const [text, count] = useTypewriter({
     words: [
-      `"Hi, The name's ${pageInfo.name}."`,
+      `"Hi, The name's ${pageInfo?.name}."`,
       "Guys-who-loves-tea.tsx",
       "<ButLovesToCodeMore />",
     ],
@@ -40,11 +40,11 @@ const Hero = ({ pageInfo }: Props) => {
   return (
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-y-hidden ">
       <HeroTsParticles />
-    
+
       <BackgroundCircle />
       <div className="w-32 h-32 relative ">
         <Image
-          src={urlFor(pageInfo.heroImage).url()}
+          src={urlFor(pageInfo?.heroImage)?.url()}
           alt="profile"
           fill
           className="rounded-full mx-auto object-cover "

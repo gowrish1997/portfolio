@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ExperienceCard from "./ExperienceCard";
 import { Experience } from "@/typings";
+import { fetchExperience } from "@/utils/fetchExperience";
 
-type Props = {experience: Experience[]};
-
-const WorkExperience = ({experience}: Props) => {
+const WorkExperience = () => {
+  const [experience, setExperience] = useState<Experience[]>([]);
+  useEffect(() => {
+    const getExperience = async () => {
+      const experience = await fetchExperience();
+      setExperience(experience);
+    };
+    getExperience();
+  }, []);
   return (
     <motion.div
       initial={{
