@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { Skill } from "@/typings";
 import { motion } from "framer-motion";
-import Eachkill from "./Skill";
-import { Experience, Skill } from "@/typings";
-import SkillsTsParticles from "./SkillTsParticles";
 import { useRouter } from "next/router";
-import { fetchSkills } from "@/utils/fetchSkills";
+import Eachkill from "./Skill";
+import SkillsTsParticles from "./SkillTsParticles";
 
-const Skills = () => {
+const Skills = ({ skills }: { skills: Skill[] }) => {
   const router = useRouter();
-  const [skills, setSkills] = useState<Skill[]>([]);
-  useEffect(() => {
-    const getSkills = async () => {
-      const skills = await fetchSkills();
-      setSkills(skills);
-    };
-    getSkills();
-  }, []);
 
   return (
     <motion.div

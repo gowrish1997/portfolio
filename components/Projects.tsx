@@ -1,20 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Project } from "@/typings";
 import { urlFor } from "@/sanity";
+import { Project } from "@/typings";
+import { motion } from "framer-motion";
 
-import { fetchProjects } from "@/utils/fetchProjects";
-
-const Projects = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  useEffect(() => {
-    const getProjects = async () => {
-      const projects = await fetchProjects();
-      setProjects(projects);
-    };
-    getProjects();
-  }, []);
-
+const Projects = ({ projects }: { projects: Project[] }) => {
   return (
     <motion.div
       initial={{
