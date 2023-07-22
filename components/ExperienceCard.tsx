@@ -9,16 +9,25 @@ type Props = { experience: Experience };
 const ExperienceCard = ({ experience }: Props) => {
   console.log(experience);
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0  w-[500px] md:w-[600px] xl:w-[900px] bg-[#292929] snap-center p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden ">
-      <motion.img
-        initial={{ y: -100, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2 }}
-        src={urlFor(experience.companyImage).url()}
-        alt="maz"
-        className="h-32 w-32 rounded-full xl:w-[200px] xl:h-[200px] object-contain object-center"
-      />
+    <article
+      className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0  w-[500px] md:w-[600px] xl:w-[900px] bg-[#292929] snap-center p-10 hover:opacity-70 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden "
+      style={{
+        backgroundImage: "linear-gradient(to top, #09203f 0%, #537895 100%)",
+      }}
+    >
+      
+        <motion.img
+          initial={{ y: -100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          src={urlFor(experience.companyImage).url()}
+          alt="maz"
+          className="h-32 w-32 rounded-full xl:w-[200px] xl:h-[200px] object-contain object-center"
+          
+        />
+       
+      
       <div className="px-0 md:px-10  ">
         <h4 className="text-4xl font-ligh  ">{experience.jobTitle}</h4>
         <p className=" font-bold text-2xl mt-1">{experience.company}</p>

@@ -38,8 +38,14 @@ export default function Home() {
 
   return (
     <main
-      className={`bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-50 scrollbar scrollbar-thumb-[#35C6F4] scrollbar-track-gray-400/20   `}
+      className={` text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-50 scrollbar scrollbar-thumb-[#35C6F4] scrollbar-track-gray-400/20   `}
+      style={{
+        backgroundImage:
+          "radial-gradient( circle 815px at 23.4% -21.8%,  rgba(9,29,85,1) 0.2%, rgba(0,0,0,1) 100.2% )",
+      }}
     >
+      {/* background-image: ;
+      linear-gradient( 111.4deg,  rgba(7,7,9,1) 6.5%, rgba(27,24,113,1) 93.2% ) */}
       {/* <motion.div
         className="progress-bar"
           style={{ scaleX: scrollYProgress }}
@@ -55,7 +61,6 @@ export default function Home() {
           <About pageInfo={pageInfo!} />
         </section>
       )}
-
       <section id="experience" className="snap-center">
         <WorkExperience />
       </section>
@@ -68,7 +73,6 @@ export default function Home() {
       <section id="contact" className="snap-start">
         <Contactme />
       </section>
-
       <Link href="#hero">
         <footer className="sticky bottom-5 w-full cursor-pointer ">
           <div className="flex items-center justify-center ">

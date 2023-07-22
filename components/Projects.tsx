@@ -35,14 +35,27 @@ const Projects = () => {
               key={index}
             >
               <a href={data.linkToBuild} target="_blank">
-                <motion.img
-                  initial={{ y: -300, opacity: 0 }}
-                  transition={{ duration: 1.2 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  src={urlFor(data.image).url()}
-                  className="w-[250px] h-[250px] object-contain"
-                />
+                <div className="relative group ">
+                  <motion.img
+                    initial={{ y: -300, opacity: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 1.2,
+                    }}
+                    viewport={{ once: true }}
+                    src={urlFor(data.image).url()}
+                    className="w-[250px] h-[250px] object-contain"
+                  />
+                  <div
+                    className="absolute bottom-0 rounded-lg h-0 w-full left-0 group-hover:h-full opacity-90 transition-all duration-500 delay-70 flex justify-center items-center text-[20px] overflow-hidden "
+                    style={{
+                      backgroundImage:
+                        "radial-gradient( circle 600px at 23.4% -21.8%,  rgba(9,29,85,1) 10%, rgba(0,0,0,1) 60.2% )",
+                    }}
+                  >
+                    Link to site ➡{" "}
+                  </div>
+                </div>
               </a>
 
               <div className="space-y-10 px-0 md:px-10 max-w-6xl ">

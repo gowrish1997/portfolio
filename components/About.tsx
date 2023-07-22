@@ -34,10 +34,11 @@ const About = ({ pageInfo }: Props) => {
         <motion.img
           initial={{ x: -200, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.2 }}
+          animate={{ y: [0, 30, 0] }}
+          transition={{ duration: 1.2,y:{repeat:'infinity',duration:3} }}
           src={urlFor(pageInfo.profilePic).url()}
           alt="about_img"
-          className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64  md:h-96 xl:w-[500px] xl:h-[600px] "
+          className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:w-64  md:h-96 xl:w-[500px] xl:h-[500px] "
         />
         <div className="space-y-10 px-0 md:px-10">
           <div className="text-4xl font-semibold flex flex-row items-center">
@@ -51,7 +52,7 @@ const About = ({ pageInfo }: Props) => {
                     initial={{ y: -200, rotate: 0 }}
                     whileInView={{ y: 0, rotate: 360 }}
                     viewport={{ once: false }}
-                    transition={{ delay: 0.1 * index, duration: 0.1 }}
+                    transition={{ delay: 0.05 * index, duration: 0.05 }}
                     className=" "
                   >
                     {letter}

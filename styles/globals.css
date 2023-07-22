@@ -4,7 +4,7 @@
 
 @layer components {
   .herobutton {
-    @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-sm tracking-widest text-gray-500 cursor-pointer transition-all hover:border-[#35C6F4]/40 hover:text-[#35C6F4]/40;
+    @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-sm tracking-widest text-white cursor-pointer transition-all hover:border-[#35C6F4]/40 hover:text-[#35C6F4]/40;
   }
   .contactInput {
     @apply outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[#242424] text-gray-500 placeholder-gray-500 focus:border-[#35C6F4]/40 focus:text-[#35C6F4]/40 transition-all hover:border-[#35C6F4]/40 hover:text-[#35C6F4]/40;
@@ -23,3 +23,11 @@
   transform-origin: 0%;
   z-index: 50;
 }
+
+.gradient-text {
+  background-image: linear-gradient( 270.3deg,  rgba(84,212,228,1) 0.2%, rgba(68,36,164,1) 100% );
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari compatibility */
+  color: transparent; /* Set text color to transparent to see the gradient */
+}
+

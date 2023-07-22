@@ -26,7 +26,6 @@ const container = {
 type Props = { pageInfo: PageInfo };
 
 const Hero = ({ pageInfo }: Props) => {
- 
   const [text, count] = useTypewriter({
     words: [
       `"Hi, The name's ${pageInfo?.name}."`,
@@ -73,7 +72,7 @@ const Hero = ({ pageInfo }: Props) => {
 
         <h1 className="text-5xl lg:text-6xl font-semibold px-10 mt-[10px] ">
           <span className="mr-3 ">{text}</span>
-          <Cursor cursorColor="red"></Cursor>
+          <Cursor cursorColor="#35C6F4"></Cursor>
         </h1>
         <div className="pt-5 flex flex-row justify-start items-center gap-x-[10px] ">
           {menuItem.map((item, index) => (
@@ -89,7 +88,15 @@ const Hero = ({ pageInfo }: Props) => {
               transition={{ duration: 2 }}
             >
               <Link href={item.link}>
-                <button className="herobutton ">{item.name}</button>
+                <button
+                  className="herobutton "
+                  style={{
+                    backgroundImage:
+                      "linear-gradient( 109.6deg,  rgba(15,2,2,1) 11.2%, rgba(36,163,190,1) 91.1% )",
+                  }}
+                >
+                  {item.name}
+                </button>
               </Link>
             </motion.div>
           ))}
