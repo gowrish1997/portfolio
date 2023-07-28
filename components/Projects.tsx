@@ -22,8 +22,8 @@ const Projects = ({ projects }: { projects: Project[] }) => {
               className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen  "
               key={index}
             >
-              <a href={data.linkToBuild} target="_blank">
-                <div className="relative group ">
+              {/* <a href={data.linkToBuild} target="_blank">
+                <div className="relative group  hover:skew-x-1 ">
                   <motion.img
                     initial={{ y: -300, opacity: 0 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ const Projects = ({ projects }: { projects: Project[] }) => {
                     }}
                     viewport={{ once: true }}
                     src={urlFor(data.image).url()}
-                    className="w-[250px] h-[250px] object-contain"
+                    className="w-[400px] h-[250px] object-fit rounded-[20px]"
                   />
                   <div
                     className="absolute bottom-0 rounded-lg h-0 w-full left-0 group-hover:h-full opacity-90 transition-all duration-500 delay-70 flex justify-center items-center text-[20px] overflow-hidden "
@@ -44,7 +44,25 @@ const Projects = ({ projects }: { projects: Project[] }) => {
                     Link to site ➡{" "}
                   </div>
                 </div>
-              </a>
+              </a> */}
+              <motion.div className="card">
+                <div className="img-container">
+                  <motion.img
+                    initial={{ y: -300, opacity: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 1.2,
+                    }}
+                    viewport={{ once: true }}
+                    src={urlFor(data.image).url()}
+                    className="object-fit rounded-[20px]"
+                  />
+                </div>
+                <a href={data.linkToBuild} target="_blank">
+                  {" "}
+                  <div className="card-details">Link to site ➡ </div>
+                </a>
+              </motion.div>
 
               <div className="space-y-10 px-0 md:px-10 max-w-6xl ">
                 <h4 className="text-4xl font-semibold text-center ">

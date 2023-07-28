@@ -25,9 +25,105 @@
 }
 
 .gradient-text {
-  background-image: linear-gradient( 270.3deg,  rgba(84,212,228,1) 0.2%, rgba(68,36,164,1) 100% );
+  background-image: linear-gradient(
+    270.3deg,
+    rgba(84, 212, 228, 1) 0.2%,
+    rgba(68, 36, 164, 1) 100%
+  );
   background-clip: text;
   -webkit-background-clip: text; /* For Safari compatibility */
   color: transparent; /* Set text color to transparent to see the gradient */
 }
 
+.card {
+  position: relative;
+  margin: 20px 0;
+  min-width: 400px;
+  min-height: 250px;
+  max-height: 250px;
+  background: #fff;
+  transform-style: preserve-3d;
+  transform: perspective(500px);
+  transition: 1s;
+  box-shadow: inset 100px 0 50px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+.card:hover {
+  z-index: 1111;
+  transform: perspective(2000px) rotate(-10deg);
+  box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.card .img-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  transform-origin: left;
+  z-index: 1;
+  transition: 1s;
+  border-radius: 20px;
+}
+
+.card .img-container img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.card:hover .img-container {
+  transform: rotateY(-135deg);
+}
+
+.card .card-details {
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  padding: 20px;
+  color: #000;
+}
+
+.mouse {
+  background-color: transparent;
+  background-clip: padding-box;
+
+  border: 2px solid transparent;
+  background: linear-gradient(to right, black, black) padding-box,
+    linear-gradient(to right, #2ce1d5, #2ce1d5) border-box;
+}
+@keyframes scroll {
+  0%,
+  20% {
+    transform: translateY(30px) scaleY(1);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px) scaleY(1.5);
+    opacity: 0.01;
+  }
+}
+.scroll {
+  animation-name: scroll;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.65, -0.55, 0.25, 1.5);
+  animation-iteration-count: infinite;
+  /* transform-origin: 50% 20.5px; */
+  will-change: transform;
+}
+.experience-card {
+  overflow: hidden; /* Try removing this to see how the sheen works! */
+  --sheenX: 0; /* Set these with JavaScript */
+  --sheenY: 0;
+
+  transform: translateX(var(--sheenX)) translateY(var(--sheenY));
+}
+.perspective-container {
+  perspective: 10000px;
+}
