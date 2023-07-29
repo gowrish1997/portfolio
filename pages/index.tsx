@@ -14,6 +14,7 @@ import { fetchSocials } from "@/utils/fetchSocials";
 import { ArrowUpIcon } from "@heroicons/react/solid";
 import { GetStaticProps } from "next";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 type Props = {
   skills: Skill[];
@@ -23,6 +24,14 @@ type Props = {
 
   pageInfo: PageInfo;
 };
+const sections = [
+  "hero",
+  "about",
+  "experience",
+  "skills",
+  "projects",
+  "contact",
+];
 
 export default function Home({
   skills,
@@ -31,6 +40,24 @@ export default function Home({
   experience,
   pageInfo,
 }: Props) {
+  const [currentSection, setCurrentSection] = useState(0);
+
+  const sectioHandler = () => {
+    if (currentSection < sections.length - 1) {
+      setCurrentSection(currentSection + 1);
+    } else {
+      setCurrentSection(0);
+    }
+  };
+
+  useEffect(() => {
+    console.log(sections[currentSection]);
+    console.log(document.getElementById(`${sections[currentSection]}`));
+    document.getElementById(sections[currentSection])?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, [currentSection]);
+
   return (
     <main
       className={` text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-50 scrollbar scrollbar-thumb-[#35C6F4] scrollbar-track-gray-400/20   `}
@@ -68,15 +95,20 @@ export default function Home({
       <section id="contact" className="snap-start">
         <Contactme />
       </section>
-      <Link href="#hero">
-        <footer className="sticky bottom-5 w-full cursor-pointer ">
-          <div className="flex items-center justify-center ">
-            <div className="mouse w-[30px] h-[50px]  rounded-[30px] flex justify-center">
-              <div className="w-[8px] h-[8px] bg-[#08f6e6] scroll rounded-full "></div>
-            </div>
+      {/* <Link href="#hero"> */}
+      {/* <div className="z-[40] "  */}
+      <footer
+        className="sticky bottom-5 w-full cursor-pointer "
+        onClick={sectioHandler}
+      >
+        <div className="flex items-center justify-center ">
+          <div className="mouse w-[30px] h-[50px]  rounded-[30px] flex justify-center">
+            <div className="w-[8px] h-[8px] bg-[#08f6e6] scroll rounded-full "></div>
           </div>
-        </footer>
-      </Link>
+        </div>
+      </footer>
+      {/* </div> */}
+      {/* </Link> */}
     </main>
   );
 }
