@@ -49,9 +49,9 @@ const ExperienceCard = ({ experience }: Props) => {
     };
   }, []);
   return (
-    <div className="perspective-container" ref={demoRef}>
+    <div className="flex perspective-container " ref={demoRef}>
       <article
-        className="experience-card flex flex-col rounded-lg items-center space-y-7 flex-shrink-0  w-[500px] md:w-[600px] xl:w-[900px] bg-[#292929] snap-center p-10 hover:opacity-70 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden "
+        className="experience-card flex flex-col rounded-lg items-center space-y-7 flex-shrink-0  w-[500px] md:w-[600px] xl:w-[850px] bg-[#292929] snap-center p-5 hover:opacity-70 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden "
         style={{
           backgroundImage: "linear-gradient(to top, #09203f 0%, #537895 100%)",
         }}

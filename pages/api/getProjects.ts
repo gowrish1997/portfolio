@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { sanityClient } from "@/sanity";
 import { groq } from "next-sanity";
-const query = groq`*[_type=='Project']{
+const query = groq`*[_type=='Project'] | order(_updatedAt asc){
   ...,
   technologies[]->
   }`;
