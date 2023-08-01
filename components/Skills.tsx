@@ -16,7 +16,7 @@ const Skills = ({ skills }: { skills: Skill[] }) => {
       transition={{ duration: 1.5 }}
       className="h-screen relative flex flex-col text-center md:text-left xl:flex-row max-w-[2000px] xl:px-10 min-h-screen justify-center xl:space-y-0 mx-auto items-center "
     >
-      <SkillsTsParticles />
+      {/* <SkillsTsParticles /> */}
       <h3 className="absolute top-10 uppercase tracking-[20px] text-gray-500 text-2xl ">
         Skills
       </h3>

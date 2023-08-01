@@ -12,10 +12,10 @@ const Projects = ({ projects }: { projects: Project[] }) => {
       transition={{ duration: 1.5 }}
       className="h-screen relative flex  flex-col text-left md:flex-row justify-evenly items-center mx-auto z-0 "
     >
-      <h3 className="absolute top-10 uppercase tracking-[20px] text-gray-500 text-2xl ">
+      <h3 className="absolute top-5 uppercase tracking-[20px] text-gray-500 text-2xl ">
         Projects
       </h3>
-      <div className="relative w-full flex overflow-x-scroll snap-x snap-mandatory overflow-y-hidden z-20 scrollbar-thumb-[#35C6F4] scrollbar-track-gray-400/20 scrollbar-thin  ">
+      <div className="relative w-full flex items-start justify-start overflow-x-scroll snap-x snap-mandatory overflow-y-hidden z-20 scrollbar-thumb-[#35C6F4] scrollbar-track-gray-400/20 scrollbar-thin mt-10 ">
         {projects.map((data, index) => {
           return (
             <div

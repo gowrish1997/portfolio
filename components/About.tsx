@@ -49,7 +49,7 @@ const About = ({ pageInfo }: Props) => {
                 return (
                   <motion.h4
                     key={index}
-                    initial={{ y: -200, rotate: 0 }}
+                    initial={{ y: -100, rotate: 0 }}
                     whileInView={{ y: 0, rotate: 360 }}
                     viewport={{ once: false }}
                     transition={{ delay: 0.05 * index, duration: 0.05 }}
