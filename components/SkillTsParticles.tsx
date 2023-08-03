@@ -1,8 +1,11 @@
+
 import { useCallback } from "react";
 import type { Container, Engine } from "tsparticles-engine";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import Cirle from "./Cirle";
+import Nextjs from '@/public/nextjs.png'
+
+import React from "react";
 
 const SkillsTsParticles = () => {
   const particlesInit = useCallback(async (engine: Engine) => {
@@ -11,15 +14,28 @@ const SkillsTsParticles = () => {
     // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
     // starting from v2 you can add only the features you need reducing the bundle size
-    await loadFull(engine);
+    try {
+      await loadFull(engine);
+    }
+    catch(error){
+      console.log(error)
+    }
+    
   }, []);
 
   const particlesLoaded = useCallback(
     async (container: Container | undefined) => {
-      await console.log(container);
+      try {
+        await console.log(container);
+      }
+      catch(error){
+        console.log(error)
+      }
+     
     },
     []
   );
+
   return (
     <Particles
       id="SkillTsParticles"
@@ -28,7 +44,7 @@ const SkillsTsParticles = () => {
       className="absolute w-screen h-screen "
       options={{
         fullScreen: { enable: false },
-        name: "Images",
+        name: "Image",
         interactivity: {
           events: {
             onClick: {
@@ -84,7 +100,7 @@ const SkillsTsParticles = () => {
           },
           shape: {
             options: {
-              image: [
+              images: [
                 {
                   name: "react",
                 },
@@ -137,7 +153,7 @@ const SkillsTsParticles = () => {
             height: 32,
           },
           {
-            src: "/nextjs.png",
+            src: Nextjs,
             name: "next.js",
             width: 32,
             height: 32,

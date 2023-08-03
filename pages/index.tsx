@@ -120,7 +120,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   const socials = await fetchSocials();
   const projects = await fetchProjects();
-  console.log(projects)
+  console.log(experience)
 
   return { props: { pageInfo, experience, skills, socials, projects } };
 };

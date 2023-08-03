@@ -38,7 +38,7 @@ const Hero = ({ pageInfo }: Props) => {
 
   return (
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-y-hidden ">
-      {/* <HeroTsParticles /> */}
+      <HeroTsParticles />
 
       <BackgroundCircle />
       <div className="w-32 h-32 relative ">
